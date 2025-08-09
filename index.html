@@ -10,7 +10,7 @@
     :root{
       --bg:#0b0b14; --card:#121223; --soft:#18182a; --line:#242446;
       --txt:#eef0ff; --muted:#b6b8d6; --accent:#7c5cff; --accent2:#22d3ee; --gold:#facc15;
-      --radius:14px; --pad:16px; --tap:14px;
+      --radius:14px; --pad:16px;
     }
     *{box-sizing:border-box}
     html,body{margin:0;background:var(--bg);color:var(--txt);font-family:system-ui,-apple-system,"Noto Sans TC",Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.65}
@@ -18,6 +18,7 @@
     a{color:inherit;text-decoration:none}
     .container{padding:0 var(--pad);max-width:520px;margin:0 auto}
 
+    /* Header */
     .header{position:sticky;top:0;z-index:50;background:rgba(11,11,20,.75);
       backdrop-filter:blur(8px) saturate(140%);border-bottom:1px solid var(--line)}
     .brand{display:flex;align-items:center;gap:10px;padding:10px var(--pad)}
@@ -28,6 +29,7 @@
     .title b{font-size:18px;letter-spacing:.4px}
     .title small{font-size:12px;color:var(--muted);letter-spacing:.6px}
 
+    /* Hero */
     .hero{position:relative;overflow:hidden}
     .shine{position:absolute;inset:-20% -10% auto -10%;height:340px;pointer-events:none;
       background:
@@ -43,35 +45,46 @@
     .buttons{display:flex;gap:10px;flex-wrap:wrap}
     .btn{flex:1 1 auto;display:inline-block;text-align:center;padding:12px;border-radius:12px;font-weight:800;border:1px solid transparent}
     .btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#0a0a0f}
-    .btn-ghost{background:#111126;border-color:var(--line);color:var(--txt)}
+    .btn-ghost{background:#111126;border-color:var(--line);color:#var(--txt)}
 
+    /* Section */
     section{padding:18px 0;border-top:1px solid var(--line)}
     .sec h2{font-size:20px;margin:0 0 8px}
     .sec p.lead{margin:0 0 10px;color:var(--muted);font-size:14px}
 
+    /* Card */
     .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px}
     .card h3{margin:0 0 6px;font-size:16px}
     .chip{display:inline-block;margin:4px 6px 0 0;font-size:11px;padding:4px 8px;border-radius:999px;
       background:#141432;border:1px solid var(--line);color:#cbd5ff}
 
-    .table-wrap{overflow:auto;border-radius:12px;border:1px solid var(--line)}
-    table{width:640px;border-collapse:collapse;background:#0f0f1e}
-    th,td{border-bottom:1px solid var(--line);padding:10px;text-align:center;font-size:14px}
-    th{background:#161636;color:#dfe1ff;position:sticky;top:0}
+    /* Schedule：與卡片同寬同風格 */
+    .table-wrap{
+      width:100%;
+      border:1px solid var(--line);
+      border-radius:12px;
+      overflow:hidden;
+      background:#0f0f1e;
+    }
+    table{
+      width:100%;              /* 不再固定 640px，跟卡片同寬 */
+      table-layout:fixed;      /* 欄寬平均 */
+      border-collapse:collapse;
+    }
+    th,td{
+      padding:12px 10px;       /* 與卡片內距一致 */
+      border-bottom:1px solid var(--line);
+      text-align:center;
+      font-size:14px;
+      white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+      line-height:1.4;         /* 控制列高，視覺更緊實 */
+    }
+    th{
+      background:#161636;color:#dfe1ff;position:sticky;top:0
+    }
+    tbody tr:last-child td{border-bottom:none}
 
-    .list{display:grid;gap:10px}
-    .row{display:flex;gap:10px;align-items:flex-start}
-    .ico{width:28px;height:28px;border-radius:8px;background:#1b1b30;border:1px solid var(--line);display:grid;place-items:center;font-size:14px}
-
-    .price{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px;background:#101024;border:1px solid var(--line);border-radius:12px}
-    .money{font-weight:900}
-
-    form{display:grid;gap:10px}
-    label{font-size:12px;color:#cdd0f5}
-    .input,select,textarea{width:100%;padding:12px;border-radius:12px;border:1px solid var(--line);background:#0e0e1a;color:#eef0ff}
-    .input:focus,select:focus,textarea:focus{outline:none;border-color:#4f46e5;box-shadow:0 0 0 3px rgba(79,70,229,.2)}
-    textarea{min-height:110px;resize:vertical}
-
+    /* Sticky bottom bar */
     .bar{position:sticky;bottom:0;z-index:60;background:rgba(10,10,18,.9);backdrop-filter:blur(8px) saturate(140%);
       border-top:1px solid var(--line);padding:10px var(--pad)}
     .bar .cta{display:flex;gap:10px}
@@ -79,12 +92,14 @@
     .line{background:#00c300;color:#021; border:1px solid #00a900}
     .book{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#0a0a0f}
 
+    /* Footer */
     footer{padding:20px var(--pad) 80px;color:#9ea1c9}
     .fine{font-size:12px;color:#8b8eb7}
   </style>
 </head>
 <body>
 
+  <!-- Header -->
   <div class="header">
     <div class="brand">
       <div class="logo" aria-hidden="true"></div>
@@ -95,6 +110,7 @@
     </div>
   </div>
 
+  <!-- Hero -->
   <div class="hero">
     <div class="shine"></div>
     <div class="hero-wrap container">
@@ -108,34 +124,28 @@
     </div>
   </div>
 
+  <!-- 關於 -->
   <section class="sec container" id="about">
     <h2>關於崇武道館</h2>
     <p class="lead">以武立德、以禮為先。從基本功到競技策略，打造可複製的穩定表現。</p>
-    <div class="list">
-      <div class="row">
-        <div class="ico">禮</div>
-        <div>
-          <h3>教育三軸</h3>
-          <p>禮儀修養｜技術體能｜品格與自信；學習不只為獎牌，更為成為更好的自己。</p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="ico">安</div>
-        <div>
-          <h3>安全至上</h3>
-          <p>分齡分級，小班制；護具齊全、暖身收操與急救知能，降低運動風險。</p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="ico">菁</div>
-        <div>
-          <h3>菁英培訓</h3>
-          <p>個別化課表：基本功 → 品勢/對打 → 競技戰術與心理素質，持續追蹤成長。</p>
-        </div>
-      </div>
+    <div class="card">
+      <h3>教育三軸</h3>
+      <p>禮儀修養｜技術體能｜品格與自信；學習不只為獎牌，更為成為更好的自己。</p>
+      <span class="chip">禮儀</span><span class="chip">體能</span><span class="chip">品格</span>
+    </div>
+    <div class="card" style="margin-top:10px">
+      <h3>安全至上</h3>
+      <p>分齡分級，小班制；護具齊全、暖身收操與急救知能，降低運動風險。</p>
+      <span class="chip">小班制</span><span class="chip">護具齊全</span>
+    </div>
+    <div class="card" style="margin-top:10px">
+      <h3>菁英培訓</h3>
+      <p>個別化課表：基本功 → 品勢/對打 → 競技戰術與心理素質，持續追蹤成長。</p>
+      <span class="chip">戰術</span><span class="chip">心理素質</span>
     </div>
   </section>
 
+  <!-- 課程 -->
   <section class="sec container" id="programs">
     <h2>課程介紹</h2>
     <p class="lead">入門、品勢、對打、體能與私教，依目標客製學習路徑。</p>
@@ -166,11 +176,12 @@
     </div>
   </section>
 
+  <!-- 課表（與卡片同寬） -->
   <section class="sec container" id="schedule">
     <h2>每週課表（示意）</h2>
     <p class="lead">小班制｜請先預約體驗以安排試上</p>
-    <div class="table-wrap">
-      <table aria-label="每週課表">
+    <div class="table-wrap" role="region" aria-label="每週課表">
+      <table>
         <thead>
           <tr>
             <th>時間</th><th>週一</th><th>週二</th><th>週三</th><th>週四</th><th>週五</th><th>週六</th>
@@ -185,6 +196,7 @@
     </div>
   </section>
 
+  <!-- 預約＋地圖 -->
   <section class="sec container" id="signup">
     <h2>預約體驗課</h2>
     <p class="lead">1–2 個工作天內回覆，協助安排試上</p>
@@ -241,6 +253,7 @@
     </div>
   </section>
 
+  <!-- Sticky CTA -->
   <div class="bar">
     <div class="container">
       <div class="cta">
@@ -255,6 +268,14 @@
     <div class="fine">© <span id="year"></span> ChongWu Dojang. All rights reserved.</div>
   </footer>
 
+  <style>
+    /* Inputs */
+    label{display:block;margin:6px 0 6px;font-size:12px;color:#cdd0f5}
+    .input,select,textarea{width:100%;padding:12px;border-radius:12px;border:1px solid var(--line);background:#0e0e1a;color:#eef0ff}
+    .input:focus,select:focus,textarea:focus{outline:none;border-color:#4f46e5;box-shadow:0 0 0 3px rgba(79,70,229,.2)}
+    textarea{min-height:110px;resize:vertical}
+  </style>
+
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
     document.querySelectorAll('a[href^="#"]').forEach(a=>{
@@ -263,16 +284,13 @@
         if(id.length>1){ e.preventDefault(); document.querySelector(id)?.scrollIntoView({behavior:'smooth'}); }
       })
     });
-    const form = document.getElementById('form');
-    form.addEventListener('submit', e=>{
+    document.getElementById('form').addEventListener('submit', e=>{
       e.preventDefault();
-      const data = Object.fromEntries(new FormData(form).entries());
-      // 這裡可串接 Google Forms 或後端
-      form.reset();
+      const data = Object.fromEntries(new FormData(e.target).entries());
+      e.target.reset();
       document.getElementById('ok').style.display='block';
-      console.log('form:', data);
+      console.log('form:', data); // 之後可串接 Google Forms 或後端
     });
-    // 若有 LINE 鏈接，可把 lineBtn 的 href 換成 line:// 或 https://line.me/R/ti/p/XXXX
   </script>
 </body>
 </html>
