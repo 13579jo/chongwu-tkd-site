@@ -36,16 +36,28 @@
         radial-gradient(closest-side at 30% 10%,rgba(124,92,255,.28),transparent 70%),
         radial-gradient(closest-side at 70% 20%,rgba(34,211,238,.22),transparent 70%);
       filter:blur(26px)}
-    .hero-wrap{padding:28px var(--pad) 12px}
+    .hero-wrap{padding:28px var(--pad) 18px}
     .badge{display:inline-flex;gap:6px;align-items:center;font-size:12px;
       padding:6px 10px;border-radius:999px;background:#161631;border:1px solid var(--line);color:#cbd5ff}
     h1{margin:10px 0 8px;font-size:28px;line-height:1.2}
     .grad{background:linear-gradient(90deg,var(--gold),#fff);-webkit-background-clip:text;background-clip:text;color:transparent}
     .sub{color:var(--muted);margin:0 0 14px}
-    .buttons{display:flex;gap:10px;flex-wrap:wrap}
-    .btn{flex:1 1 auto;display:inline-block;text-align:center;padding:12px;border-radius:12px;font-weight:800;border:1px solid transparent}
-    .btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#0a0a0f}
-    .btn-ghost{background:#111126;border-color:var(--line);color:#var(--txt)}
+
+    /* 影片外框 */
+    .video-shell{
+      position:relative; border-radius:16px; overflow:hidden;
+      border:1px solid var(--line); background:#0b0b14;
+      box-shadow:0 10px 30px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.03);
+    }
+    .video-accent{
+      position:absolute; inset:-20% -10% auto -10%; height:240px; pointer-events:none;
+      background:
+        radial-gradient(closest-side at 20% 10%, rgba(124,92,255,.18), transparent 70%),
+        radial-gradient(closest-side at 80% 30%, rgba(34,211,238,.14), transparent 70%);
+      filter:blur(24px);
+    }
+    .video-frame{ position:relative; aspect-ratio:16/9; width:100%; }
+    .video-frame iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; }
 
     /* Section */
     section{padding:18px 0;border-top:1px solid var(--line)}
@@ -66,22 +78,19 @@
     }
     #carousel img{
       position:absolute; inset:0; width:100%; height:100%;
-      object-fit:contain; background:#000; /* 完整顯示，避免切頭 */
+      object-fit:contain; background:#000;
       opacity:0; transition:opacity 260ms ease-in-out;
     }
     #carousel img.active{ opacity:1; }
     #dots{position:absolute; bottom:8px; left:50%; transform:translateX(-50%); display:flex; gap:6px; z-index:3}
     #dots span{width:8px; height:8px; border-radius:50%; background:#9aa; opacity:.6; cursor:pointer}
     #dots span.on{background:#fff; opacity:1}
-
-    /* 左右箭頭 */
     .nav{
       position:absolute; top:50%; transform:translateY(-50%);
       width:34px; height:34px; display:grid; place-items:center;
       background:rgba(0,0,0,.45); border:1px solid rgba(255,255,255,.25);
       border-radius:999px; z-index:3; cursor:pointer;
       backdrop-filter:saturate(130%) blur(2px);
-      transition:opacity .2s;
     }
     .nav:hover{opacity:.95}
     .nav:active{transform:translateY(-50%) scale(.98)}
@@ -136,17 +145,30 @@
     </div>
   </div>
 
-  <!-- Hero -->
+  <!-- Hero（移除兩顆按鈕，改為影片外框） -->
   <div class="hero">
     <div class="shine"></div>
     <div class="hero-wrap container">
       <span class="badge">🥋 武德‧專注‧自律</span>
       <h1>在 <span class="grad">秩序與榮耀</span> 裡成長</h1>
       <p class="sub">品勢、對打、體能與禮儀並進；用紀律換自信，用努力換舞台光。</p>
-      <div class="buttons">
-        <a href="#signup" class="btn btn-primary">預約體驗課</a>
-        <a href="#about" class="btn btn-ghost">了解理念</a>
+
+      <!-- 影片外框開始 -->
+      <div class="video-shell">
+        <div class="video-accent"></div>
+        <div class="video-frame">
+          <iframe
+            title="尚武跆拳道影片"
+            src="https://www.youtube-nocookie.com/embed/G8FE2_-fkq8?rel=0&modestbranding=1&playsinline=1"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen>
+          </iframe>
+        </div>
       </div>
+      <!-- 影片外框結束 -->
+
     </div>
   </div>
 
@@ -183,7 +205,6 @@
     <div class="card"><h3>幼兒啟蒙（5–7歲）</h3><p>遊戲化訓練專注與協調，建立禮儀、站姿與安全踢擊概念。</p></div>
     <div class="card" style="margin-top:10px"><h3>少年基礎（8–12歲）</h3><p>基本功＋核心體能；導入步伐、反應與入門品勢。</p></div>
     <div class="card" style="margin-top:10px"><h3>菁英競技／備賽</h3><p>品勢角度精修、對打戰術、比賽模擬與臨場應變；附個人化訓練表。</p></div>
-    <div class="card" style="margin-top:10px"><h3>成人體能＆自衛</h3><p>提升肌耐力、柔軟度與心肺；學習防身與安全距離概念。</p></div>
   </section>
 
   <!-- 預約＋地圖 -->
@@ -196,7 +217,7 @@
       <label>聯絡電話<input class="input" name="phone" placeholder="09xx-xxx-xxx" required /></label>
       <label>想報名的課程<select class="input" name="program">
         <option>幼兒啟蒙</option><option>少年基礎</option><option>菁英競技</option>
-        <option>成人體能＆自衛</option><option>私教一對一</option></select></label>
+        <option>私教一對一</option></select></label>
       <label>備註<textarea class="input" name="note" placeholder="可配合時段？是否有運動習慣？"></textarea></label>
       <button class="btn btn-primary" type="submit">送出表單</button>
       <p id="ok" style="display:none;color:#9ae6b4;margin:6px 2px 0">已收到您的需求，我們會盡快聯絡您！</p>
@@ -281,7 +302,7 @@
       console.log('form:', data);
     });
 
-    // ===== 照片輪播（3秒/張）=====
+    // 照片輪播（3秒/張）
     const siteBase = window.location.origin + '/chongwu-tkd-site/';
     const files = [
       '551.jpg','552.jpg','553.jpg','554.jpg','555.jpg','556.jpg',
@@ -334,7 +355,7 @@
     ['mouseenter','touchstart'].forEach(ev=> frame.addEventListener(ev, stopAuto, {passive:true}));
     ['mouseleave','touchend','touchcancel'].forEach(ev=> frame.addEventListener(ev, startAuto, {passive:true}));
 
-    // ===== Lightbox 全螢幕 =====
+    // Lightbox 全螢幕
     const lb = document.getElementById('lightbox');
     const lbImg = document.getElementById('lb-img');
     const lbClose = document.getElementById('lb-close');
@@ -374,6 +395,3 @@
   </script>
 </body>
 </html>
-
-
-
