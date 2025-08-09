@@ -67,14 +67,14 @@
     #carousel img{
       position:absolute; inset:0; width:100%; height:100%;
       object-fit:contain; background:#000; /* 完整顯示，避免切頭 */
-      opacity:0; transition:opacity 280ms ease-in-out;
+      opacity:0; transition:opacity 260ms ease-in-out;
     }
     #carousel img.active{ opacity:1; }
     #dots{position:absolute; bottom:8px; left:50%; transform:translateX(-50%); display:flex; gap:6px; z-index:3}
     #dots span{width:8px; height:8px; border-radius:50%; background:#9aa; opacity:.6; cursor:pointer}
     #dots span.on{background:#fff; opacity:1}
 
-    /* 左右箭頭（可點擊） */
+    /* 左右箭頭 */
     .nav{
       position:absolute; top:50%; transform:translateY(-50%);
       width:34px; height:34px; display:grid; place-items:center;
@@ -88,14 +88,6 @@
     .prev{left:8px}
     .next{right:8px}
     .nav svg{width:18px; height:18px; fill:#fff}
-
-    /* Sticky bottom bar */
-    .bar{position:sticky;bottom:0;z-index:60;background:rgba(10,10,18,.9);backdrop-filter:blur(8px) saturate(140%);
-      border-top:1px solid var(--line);padding:10px var(--pad)}
-    .bar .cta{display:flex;gap:10px}
-    .bar .cta a{flex:1 1 0;padding:12px;border-radius:12px;text-align:center;font-weight:900}
-    .call{background:#10b981;color:#031; border:1px solid #0ea66c}
-    .book{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#0a0a0f}
 
     /* Footer */
     footer{padding:20px var(--pad) 80px;color:#9ea1c9}
@@ -122,6 +114,13 @@
     #lb-prev{left:16px}
     #lb-next{right:16px}
     .lb-nav svg, #lb-close svg{width:22px; height:22px; fill:#fff}
+
+    /* Map 卡片外觀 */
+    .map-card{
+      margin-top:10px; border:1px solid var(--line); border-radius:12px; overflow:hidden;
+      background:#0e0e1a;
+    }
+    .map-frame{ aspect-ratio:16/9; width:100%; border:0; display:block; }
   </style>
 </head>
 <body>
@@ -160,7 +159,7 @@
     <div class="card" style="margin-top:10px"><h3>菁英培訓</h3><p>個別化課表：基本功 → 品勢/對打 → 競技戰術與心理素質，持續追蹤成長。</p></div>
   </section>
 
-  <!-- 固定框輪播（置中顯示） -->
+  <!-- 固定框輪播 -->
   <section class="sec container" id="photos">
     <h2>道館活動照片</h2>
     <div id="photo-frame" aria-label="照片輪播">
@@ -203,17 +202,21 @@
       <p id="ok" style="display:none;color:#9ae6b4;margin:6px 2px 0">已收到您的需求，我們會盡快聯絡您！</p>
     </form>
 
-    <div class="card" style="margin-top:10px">
-      <h3>館務資訊</h3>
-      <p style="color:var(--muted);margin:6px 0 0">
+    <div class="card map-card">
+      <h3 style="margin:12px 14px 0">館務資訊</h3>
+      <p style="color:var(--muted);margin:6px 14px 10px">
         地址：台北市北投區中央北路二段151號2樓<br>
         聯絡電話：<a href="tel:0922556193" style="color:#aef5c6;font-weight:700">0922-556-193</a>（黃教練）
       </p>
-      <div style="margin-top:10px;aspect-ratio:16/9;border:1px solid var(--line);border-radius:12px;overflow:hidden">
-        <iframe title="尚武跆拳道地圖" width="100%" height="100%" style="border:0" loading="lazy" allowfullscreen
-          src="https://www.google.com/maps?q=%E5%8F%B0%E5%8C%97%E5%B8%82%E5%8C%97%E6%8A%95%E5%8D%80%E4%B8%AD%E5%A4%AE%E5%8C%97%E8%B7%AF%E4%BA%8C%E6%AE%B5151%E8%99%9F2%E6%A8%93&output=embed"></iframe>
-      </div>
-      <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
+      <iframe
+        class="map-frame"
+        title="尚武跆拳道地圖"
+        loading="lazy"
+        allowfullscreen
+        referrerpolicy="no-referrer-when-downgrade"
+        src="https://maps.google.com/maps?hl=zh-TW&q=%E5%8F%B0%E5%8C%97%E5%B8%82%E5%8C%97%E6%8A%95%E5%8D%80%E4%B8%AD%E5%A4%AE%E5%8C%97%E8%B7%AF%E4%BA%8C%E6%AE%B5151%E8%99%9F2%E6%A8%93&t=&z=17&ie=UTF8&iwloc=B&output=embed">
+      </iframe>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;padding:12px 14px 14px">
         <a class="btn btn-ghost" href="https://www.google.com/maps?q=台北市北投區中央北路二段151號2樓" target="_blank" rel="noopener">在 Google 地圖開啟</a>
         <a class="btn btn-ghost" href="tel:0922556193">直接撥打 0922-556-193</a>
       </div>
@@ -278,7 +281,7 @@
       console.log('form:', data);
     });
 
-    // ===== 照片輪播 =====
+    // ===== 照片輪播（3秒/張）=====
     const siteBase = window.location.origin + '/chongwu-tkd-site/';
     const files = [
       '551.jpg','552.jpg','553.jpg','554.jpg','555.jpg','556.jpg',
@@ -287,7 +290,7 @@
       '5519.jpg','5520.jpg','5521.jpg'
     ];
 
-    const delay = 6000; // 每張 6 秒
+    const delay = 3000; // 每張 3 秒
     const wrap = document.getElementById('carousel');
     const dots = document.getElementById('dots');
     const prevBtn = document.getElementById('prevBtn');
@@ -371,4 +374,6 @@
   </script>
 </body>
 </html>
+
+
 
