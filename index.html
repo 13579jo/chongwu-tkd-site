@@ -22,7 +22,6 @@
     a{color:inherit;text-decoration:none}
     .container{padding:0 var(--pad);max-width:var(--max);margin:0 auto}
 
-    /* 全站排版：字級與間距 */
     body{font-size:16px; line-height:1.9; letter-spacing:.2px}
     p{margin:0 0 0.9rem}
     h1,h2,h3{line-height:1.35; margin:0 0 .6rem; letter-spacing:.3px}
@@ -30,7 +29,6 @@
     h2{font-size:22px; font-weight:800; margin-top:.3rem}
     h3{font-size:17px; font-weight:700}
 
-    /* Header */
     .header{position:sticky;top:0;z-index:50;background:rgba(11,11,20,.7);
       backdrop-filter:blur(8px) saturate(140%);border-bottom:1px solid var(--line)}
     .brand{display:flex;align-items:center;gap:12px;padding:12px var(--pad)}
@@ -41,7 +39,6 @@
     .title b{font-size:18px;letter-spacing:.5px}
     .title small{font-size:12px;color:var(--muted);letter-spacing:.6px}
 
-    /* Hero */
     .hero{position:relative;overflow:hidden}
     .shine{position:absolute;inset:-20% -10% auto -10%;height:360px;pointer-events:none;
       background:
@@ -54,7 +51,6 @@
     .grad{background:linear-gradient(90deg,var(--gold),#fff);-webkit-background-clip:text;background-clip:text;color:transparent}
     .sub{color:var(--muted);margin:.2rem 0 0.8rem}
 
-    /* 影片外框 */
     .video-shell{
       position:relative; border-radius:16px; overflow:hidden;
       border:1px solid var(--line); background:#0b0b14;
@@ -71,15 +67,12 @@
     .video-frame{ position:relative; aspect-ratio:16/9; width:100%; }
     .video-frame iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; }
 
-    /* Section */
     section{padding:22px 0;border-top:1px solid var(--line)}
     .lead{color:var(--muted)}
 
-    /* Cards */
     .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px}
     .card + .card{margin-top:12px}
 
-    /* 固定框輪播（320×220） */
     #photo-frame{
       width:320px; height:220px; margin:18px auto; position:relative;
       overflow:hidden; border:3px solid #313244; border-radius:14px; background:#000;
@@ -95,7 +88,6 @@
     #dots span{width:8px; height:8px; border-radius:50%; background:#9aa; opacity:.6; cursor:pointer}
     #dots span.on{background:#fff; opacity:1}
 
-    /* 左右箭頭 */
     .nav{
       position:absolute; top:50%; transform:translateY(-50%);
       width:36px; height:36px; display:grid; place-items:center;
@@ -106,15 +98,12 @@
     .next{right:8px}
     .nav svg{width:18px; height:18px; fill:#fff}
 
-    /* Map */
     .map-card{ margin-top:12px; border:1px solid var(--line); border-radius:12px; overflow:hidden; background:#0e0e1a; }
     .map-frame{ aspect-ratio:16/9; width:100%; border:0; display:block; }
 
-    /* Footer */
     footer{padding:22px var(--pad) 80px;color:#9ea1c9}
     .fine{font-size:12px;color:#8b8eb7}
 
-    /* Lightbox 全螢幕預覽 */
     #lightbox{
       position:fixed; inset:0; background:rgba(0,0,0,.9);
       display:none; align-items:center; justify-content:center; z-index:100;
@@ -136,7 +125,6 @@
     #lb-next{right:16px}
     .lb-nav svg, #lb-close svg{width:22px; height:22px; fill:#fff}
 
-    /* 手機微調 */
     @media (max-width:420px){
       h1{font-size:26px}
       h2{font-size:20px}
@@ -164,8 +152,12 @@
       <span class="badge">🥋 武德・專注・自律</span>
       <h1>在 <span class="grad">秩序與榮耀</span> 裡成長</h1>
       <p class="sub">
-        從基礎品勢扎根，到創意自由品勢展翼<br>從體能鍛鍊到對打實戰，再以兒童跆舞點燃舞台魅力。<br>
-        品勢、對打、體能與禮儀並進<br>用紀律換來自信，用努力換來榮耀<br>讓學習更有趣、表現更立體，自律與自信同步成長。
+        一步步從基礎品勢出發，<br>
+        展翅於自由品勢的創意天地；<br>
+        體能鍛鍊與對打實戰並進，<br>
+        再以兒童跆舞綻放笑容與光彩。<br>
+        在紀律中建立自信，在努力中收穫榮耀，<br>
+        每一次學習，都是向更好的自己邁進。
       </p>
       <div class="video-shell">
         <div class="video-accent"></div>
@@ -191,7 +183,7 @@
     <div class="card"><h3>菁英培訓</h3><p class="lead">個別化課表：基本功 → 品勢／自由品勢／對打 → 競技戰術與心理素質，持續追蹤成長。</p></div>
   </section>
 
-  <!-- 照片輪播（固定框） -->
+  <!-- 照片輪播 -->
   <section class="sec container" id="photos">
     <h2>道館活動照片</h2>
     <div id="photo-frame" aria-label="照片輪播">
@@ -254,10 +246,9 @@
   </div>
 
   <script>
-    // 年份
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // ===== 照片輪播（3秒/張）=====
+    // 照片輪播（3秒/張）
     const siteBase = window.location.origin + '/chongwu-tkd-site/';
     const files = [
       '551.jpg','552.jpg','553.jpg','554.jpg','555.jpg','556.jpg',
@@ -300,11 +291,10 @@
     function restartAuto(){ stopAuto(); startAuto(); }
 
     show(0); startAuto();
-
     nextBtn.addEventListener('click', ()=> { next(); restartAuto(); });
     prevBtn.addEventListener('click', ()=> { prev(); restartAuto(); });
 
-    // Lightbox 全螢幕
+    // Lightbox
     const lb = document.getElementById('lightbox');
     const lbImg = document.getElementById('lb-img');
     const lbClose = document.getElementById('lb-close');
@@ -312,28 +302,14 @@
     const lbNext = document.getElementById('lb-next');
     let lbIndex = 0;
 
-    function openLightbox(idx){
-      lbIndex = idx;
-      lbImg.src = imgs[lbIndex].src;
-      lb.classList.add('open');
-      stopAuto();
-    }
-    function closeLightbox(){
-      lb.classList.remove('open');
-      lbImg.src = '';
-      startAuto();
-    }
-    function lbShow(n){
-      lbIndex = (n + imgs.length) % imgs.length;
-      lbImg.src = imgs[lbIndex].src;
-      show(lbIndex, true);
-    }
+    function openLightbox(idx){ lbIndex = idx; lbImg.src = imgs[lbIndex].src; lb.classList.add('open'); stopAuto(); }
+    function closeLightbox(){ lb.classList.remove('open'); lbImg.src = ''; startAuto(); }
+    function lbShow(n){ lbIndex = (n + imgs.length) % imgs.length; lbImg.src = imgs[lbIndex].src; show(lbIndex, true); }
 
     lbClose.addEventListener('click', closeLightbox);
     lbPrev.addEventListener('click', ()=> lbShow(lbIndex-1));
     lbNext.addEventListener('click', ()=> lbShow(lbIndex+1));
     lb.addEventListener('click', (e)=>{ if(e.target===lb) closeLightbox(); });
-
     document.addEventListener('keydown', (e)=>{
       if(!lb.classList.contains('open')) return;
       if(e.key==='Escape') closeLightbox();
@@ -343,8 +319,4 @@
   </script>
 </body>
 </html>
-
-
-
-
 
