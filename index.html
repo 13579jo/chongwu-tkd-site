@@ -4,51 +4,62 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>尚武跆拳道｜手機版官網</title>
-  <meta name="description" content="尚武跆拳道｜書本教不了寶貝的，交给我滿來教！品勢・自由品勢・對打・體能・禮儀・兒童跆舞" />
+  <meta name="description" content="尚武跆拳道｜品勢・自由品勢・對打・體能・禮儀・兒童跆舞" />
   <meta name="theme-color" content="#0b0b14" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg:#0b0b14; --card:#121223; --soft:#18182a; --line:#242446;
-      --txt:#eef0ff; --muted:#b6b8d6; --accent:#7c5cff; --accent2:#22d3ee; --gold:#facc15;
-      --radius:14px; --pad:16px;
+      --bg:#0b0b14; --card:#121223; --line:#242446;
+      --txt:#eef0ff; --muted:#b7bad7; --accent:#7c5cff; --accent2:#22d3ee; --gold:#facc15;
+      --radius:16px; --pad:18px; --max:620px;
     }
     *{box-sizing:border-box}
-    html,body{margin:0;background:var(--bg);color:var(--txt);font-family:system-ui,-apple-system,"Noto Sans TC",Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.65}
+    html,body{margin:0;background:var(--bg);color:var(--txt);
+      font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,Segoe UI,Roboto,Arial,sans-serif;
+      -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility}
     img{max-width:100%;display:block}
     a{color:inherit;text-decoration:none}
-    .container{padding:0 var(--pad);max-width:520px;margin:0 auto}
+    .container{padding:0 var(--pad);max-width:var(--max);margin:0 auto}
+
+    /* 全站排版：字級與間距 */
+    body{font-size:16px; line-height:1.9; letter-spacing:.2px}
+    p{margin:0 0 0.9rem}
+    h1,h2,h3{line-height:1.35; margin:0 0 .6rem; letter-spacing:.3px}
+    h1{font-size:28px; font-weight:800}
+    h2{font-size:22px; font-weight:800; margin-top:.3rem}
+    h3{font-size:17px; font-weight:700}
 
     /* Header */
-    .header{position:sticky;top:0;z-index:50;background:rgba(11,11,20,.75);
+    .header{position:sticky;top:0;z-index:50;background:rgba(11,11,20,.7);
       backdrop-filter:blur(8px) saturate(140%);border-bottom:1px solid var(--line)}
-    .brand{display:flex;align-items:center;gap:10px;padding:10px var(--pad)}
-    .logo{width:36px;height:36px;border-radius:10px;background:
+    .brand{display:flex;align-items:center;gap:12px;padding:12px var(--pad)}
+    .logo{width:38px;height:38px;border-radius:12px;background:
       conic-gradient(from 220deg,var(--accent),var(--accent2),var(--gold),var(--accent));
       box-shadow:0 0 14px rgba(124,92,255,.35)}
     .title{display:flex;flex-direction:column}
-    .title b{font-size:18px;letter-spacing:.4px}
+    .title b{font-size:18px;letter-spacing:.5px}
     .title small{font-size:12px;color:var(--muted);letter-spacing:.6px}
 
     /* Hero */
     .hero{position:relative;overflow:hidden}
-    .shine{position:absolute;inset:-20% -10% auto -10%;height:340px;pointer-events:none;
+    .shine{position:absolute;inset:-20% -10% auto -10%;height:360px;pointer-events:none;
       background:
         radial-gradient(closest-side at 30% 10%,rgba(124,92,255,.28),transparent 70%),
         radial-gradient(closest-side at 70% 20%,rgba(34,211,238,.22),transparent 70%);
       filter:blur(26px)}
-    .hero-wrap{padding:28px var(--pad) 18px}
-    .badge{display:inline-flex;gap:6px;align-items:center;font-size:12px;
-      padding:6px 10px;border-radius:999px;background:#161631;border:1px solid var(--line);color:#cbd5ff}
-    h1{margin:10px 0 8px;font-size:28px;line-height:1.2}
+    .hero-wrap{padding:28px var(--pad) 20px}
+    .badge{display:inline-flex;gap:8px;align-items:center;font-size:12px;
+      padding:7px 12px;border-radius:999px;background:#161631;border:1px solid var(--line);color:#cbd5ff;margin-bottom:10px}
     .grad{background:linear-gradient(90deg,var(--gold),#fff);-webkit-background-clip:text;background-clip:text;color:transparent}
-    .sub{color:var(--muted);margin:0 0 14px}
+    .sub{color:var(--muted);margin:.2rem 0 0.8rem}
 
     /* 影片外框 */
     .video-shell{
       position:relative; border-radius:16px; overflow:hidden;
       border:1px solid var(--line); background:#0b0b14;
-      box-shadow:0 10px 30px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.03);
-      margin-top:10px;
+      box-shadow:0 14px 34px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.03);
+      margin-top:12px
     }
     .video-accent{
       position:absolute; inset:-20% -10% auto -10%; height:240px; pointer-events:none;
@@ -61,24 +72,23 @@
     .video-frame iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; }
 
     /* Section */
-    section{padding:18px 0;border-top:1px solid var(--line)}
-    .sec h2{font-size:20px;margin:0 0 8px}
-    .sec p.lead{margin:0 0 10px;color:var(--muted);font-size:14px}
+    section{padding:22px 0;border-top:1px solid var(--line)}
+    .lead{color:var(--muted)}
 
     /* Cards */
-    .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px}
-    .card h3{margin:0 0 6px;font-size:16px}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px}
+    .card + .card{margin-top:12px}
 
-    /* 固定框輪播 */
+    /* 固定框輪播（320×220） */
     #photo-frame{
-      width:320px; height:220px; margin:20px auto; position:relative;
-      overflow:hidden; border:3px solid #333; border-radius:12px; background:#000;
+      width:320px; height:220px; margin:18px auto; position:relative;
+      overflow:hidden; border:3px solid #313244; border-radius:14px; background:#000;
       user-select:none; -webkit-user-select:none;
     }
     #carousel img{
       position:absolute; inset:0; width:100%; height:100%;
-      object-fit:contain; background:#000; /* 完整顯示，避免切頭 */
-      opacity:0; transition:opacity 240ms ease-in-out;
+      object-fit:contain; background:#000;
+      opacity:0; transition:opacity 220ms ease-in-out;
     }
     #carousel img.active{ opacity:1; }
     #dots{position:absolute; bottom:8px; left:50%; transform:translateX(-50%); display:flex; gap:6px; z-index:3}
@@ -88,17 +98,20 @@
     /* 左右箭頭 */
     .nav{
       position:absolute; top:50%; transform:translateY(-50%);
-      width:34px; height:34px; display:grid; place-items:center;
-      background:rgba(0,0,0,.45); border:1px solid rgba(255,255,255,.25);
-      border-radius:999px; z-index:3; cursor:pointer;
-      backdrop-filter:saturate(130%) blur(2px);
+      width:36px; height:36px; display:grid; place-items:center;
+      background:rgba(0,0,0,.5); border:1px solid rgba(255,255,255,.25);
+      border-radius:999px; z-index:3; cursor:pointer; backdrop-filter:saturate(130%) blur(2px);
     }
     .prev{left:8px}
     .next{right:8px}
     .nav svg{width:18px; height:18px; fill:#fff}
 
+    /* Map */
+    .map-card{ margin-top:12px; border:1px solid var(--line); border-radius:12px; overflow:hidden; background:#0e0e1a; }
+    .map-frame{ aspect-ratio:16/9; width:100%; border:0; display:block; }
+
     /* Footer */
-    footer{padding:20px var(--pad) 80px;color:#9ea1c9}
+    footer{padding:22px var(--pad) 80px;color:#9ea1c9}
     .fine{font-size:12px;color:#8b8eb7}
 
     /* Lightbox 全螢幕預覽 */
@@ -108,13 +121,13 @@
     }
     #lightbox.open{display:flex}
     #lightbox img{
-      max-width:92vw; max-height:90vh; object-fit:contain; background:#000; border-radius:8px;
+      max-width:92vw; max-height:90vh; object-fit:contain; background:#000; border-radius:10px;
       box-shadow:0 10px 40px rgba(0,0,0,.6)
     }
     #lb-close, .lb-nav{
       position:absolute; color:#fff; background:rgba(0,0,0,.4);
       border:1px solid rgba(255,255,255,.25); border-radius:999px;
-      width:40px; height:40px; display:grid; place-items:center; cursor:pointer;
+      width:42px; height:42px; display:grid; place-items:center; cursor:pointer;
       backdrop-filter:saturate(130%) blur(2px);
     }
     #lb-close{top:16px; right:16px}
@@ -123,19 +136,19 @@
     #lb-next{right:16px}
     .lb-nav svg, #lb-close svg{width:22px; height:22px; fill:#fff}
 
-    /* Map 卡片外觀 */
-    .map-card{
-      margin-top:10px; border:1px solid var(--line); border-radius:12px; overflow:hidden;
-      background:#0e0e1a;
+    /* 手機微調 */
+    @media (max-width:420px){
+      h1{font-size:26px}
+      h2{font-size:20px}
+      .hero-wrap{padding:24px var(--pad) 16px}
     }
-    .map-frame{ aspect-ratio:16/9; width:100%; border:0; display:block; }
   </style>
 </head>
 <body>
 
   <!-- Header -->
   <div class="header">
-    <div class="brand">
+    <div class="brand container">
       <div class="logo" aria-hidden="true"></div>
       <div class="title">
         <b>尚武跆拳道</b>
@@ -144,18 +157,15 @@
     </div>
   </div>
 
-  <!-- Hero（新口號＋YouTube 影片） -->
+  <!-- Hero：新口號＋影片 -->
   <div class="hero">
     <div class="shine"></div>
     <div class="hero-wrap container">
-      <span class="badge">🥋 武德‧專注‧自律</span>
+      <span class="badge">🥋 武德・專注・自律</span>
       <h1>在 <span class="grad">秩序與榮耀</span> 裡成長</h1>
       <p class="sub">
-        從基礎品勢扎根 到創意自由品勢展翼
-        從體能鍛鍊到對打實戰 再以兒童跆舞點燃舞台魅力<br>
-        品勢、對打、體能與禮儀並進
-        用紀律換來自信 用努力換來榮耀 
-        讓學習更有趣、表現更立體，自律與自信同步成長。
+        從基礎品勢扎根，到創意自由品勢展翼；從體能鍛鍊到對打實戰，再以兒童跆舞點燃舞台魅力。<br>
+        品勢、對打、體能與禮儀並進；用紀律換來自信，用努力換來榮耀，讓學習更有趣、表現更立體，自律與自信同步成長。
       </p>
       <div class="video-shell">
         <div class="video-accent"></div>
@@ -176,25 +186,22 @@
   <!-- 關於 -->
   <section class="sec container" id="about">
     <h2>關於我們</h2>
-    <div class="card"><h3>教育三軸</h3><p>禮儀修養｜技術體能｜品格與自信；學習不只為獎牌，更為成為更好的自己。</p></div>
-    <div class="card" style="margin-top:10px"><h3>安全至上</h3><p>分齡分級，小班制；護具齊全、暖身收操與急救知能，降低運動風險。</p></div>
-    <div class="card" style="margin-top:10px"><h3>菁英培訓</h3><p>個別化課表：基本功 → 品勢/自由品勢/對打 → 競技戰術與心理素質，持續追蹤成長。</p></div>
+    <div class="card"><h3>教育三軸</h3><p class="lead">禮儀修養｜技術體能｜品格與自信；學習不只為獎牌，更為成為更好的自己。</p></div>
+    <div class="card"><h3>安全至上</h3><p class="lead">分齡分級，小班制；護具齊全、暖身收操與急救知能，降低運動風險。</p></div>
+    <div class="card"><h3>菁英培訓</h3><p class="lead">個別化課表：基本功 → 品勢／自由品勢／對打 → 競技戰術與心理素質，持續追蹤成長。</p></div>
   </section>
 
-  <!-- 固定框輪播 -->
+  <!-- 照片輪播（固定框） -->
   <section class="sec container" id="photos">
     <h2>道館活動照片</h2>
     <div id="photo-frame" aria-label="照片輪播">
       <button class="nav prev" id="prevBtn" aria-label="上一張">
         <svg viewBox="0 0 24 24"><path d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
       </button>
-
       <div id="carousel" role="listbox" aria-live="polite"></div>
-
       <button class="nav next" id="nextBtn" aria-label="下一張">
         <svg viewBox="0 0 24 24"><path d="M8.59 16.59 10 18l6-6-6-6-1.41 1.41L13.17 12z"/></svg>
       </button>
-
       <div id="dots" aria-hidden="true"></div>
     </div>
   </section>
@@ -202,20 +209,19 @@
   <!-- 課程 -->
   <section class="sec container" id="programs">
     <h2>課程介紹</h2>
-    <div class="card"><h3>幼兒啟蒙（5–7歲）</h3><p>遊戲化訓練專注與協調，建立禮儀、站姿與安全踢擊概念。</p></div>
-    <div class="card" style="margin-top:10px"><h3>少年基礎（8–12歲）</h3><p>基本功＋核心體能；導入步伐、反應與入門品勢。</p></div>
-    <div class="card" style="margin-top:10px"><h3>菁英競技／備賽</h3><p>品勢與自由品勢角度精修、對打戰術、比賽模擬與臨場應變。</p></div>
-    <!-- 已移除：成人體能＆自衛 -->
+    <div class="card"><h3>幼兒啟蒙（5–7歲）</h3><p class="lead">遊戲化訓練專注與協調，建立禮儀、站姿與安全踢擊概念。</p></div>
+    <div class="card"><h3>少年基礎（8–12歲）</h3><p class="lead">基本功＋核心體能；導入步伐、反應與入門品勢。</p></div>
+    <div class="card"><h3>菁英競技／備賽</h3><p class="lead">品勢與自由品勢角度精修、對打戰術、比賽模擬與臨場應變。</p></div>
   </section>
 
   <!-- 聯絡＋地圖 -->
-  <section class="sec container" id="signup">
+  <section class="sec container" id="contact">
     <h2>聯絡我們 / 預約體驗</h2>
     <div class="card map-card">
-      <h3 style="margin:12px 14px 0">館務資訊</h3>
-      <p style="color:var(--muted);margin:6px 14px 10px">
+      <h3 style="margin:6px 14px 0">館務資訊</h3>
+      <p class="lead" style="margin:6px 14px 10px">
         地址：台北市北投區中央北路二段151號2樓<br>
-        聯絡電話：<a href="tel:0922556193" style="color:#aef5c6;font-weight:700">0922-556-193</a>（黃教練）
+        聯絡電話：<strong><a href="tel:0922556193">0922-556-193（黃教練）</a></strong>
       </p>
       <iframe
         class="map-frame"
@@ -225,10 +231,6 @@
         referrerpolicy="no-referrer-when-downgrade"
         src="https://maps.google.com/maps?hl=zh-TW&q=%E5%8F%B0%E5%8C%97%E5%B8%82%E5%8C%97%E6%8A%95%E5%8D%80%E4%B8%AD%E5%A4%AE%E5%8C%97%E8%B7%AF%E4%BA%8C%E6%AE%B5151%E8%99%9F2%E6%A8%93&t=&z=17&ie=UTF8&iwloc=B&output=embed">
       </iframe>
-      <div style="display:flex;gap:8px;flex-wrap:wrap;padding:12px 14px 14px">
-        <a class="btn btn-ghost" href="https://www.google.com/maps?q=台北市北投區中央北路二段151號2樓" target="_blank" rel="noopener">在 Google 地圖開啟</a>
-        <a class="btn btn-ghost" href="tel:0922556193">直接撥打 0922-556-193</a>
-      </div>
     </div>
   </section>
 
