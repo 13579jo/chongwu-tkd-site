@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>尚武跆拳道｜手機版官網</title>
-  <meta name="description" content="尚武跆拳道｜書本教不了寶貝的，交给我滿來教！兒童青少年跆拳道｜品勢・對打・體能・禮儀｜預約體驗課" />
+  <meta name="description" content="尚武跆拳道｜書本教不了寶貝的，交给我滿來教！品勢・自由品勢・對打・體能・禮儀・兒童跆舞" />
   <meta name="theme-color" content="#0b0b14" />
   <style>
     :root{
@@ -48,6 +48,7 @@
       position:relative; border-radius:16px; overflow:hidden;
       border:1px solid var(--line); background:#0b0b14;
       box-shadow:0 10px 30px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.03);
+      margin-top:10px;
     }
     .video-accent{
       position:absolute; inset:-20% -10% auto -10%; height:240px; pointer-events:none;
@@ -67,8 +68,6 @@
     /* Cards */
     .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px}
     .card h3{margin:0 0 6px;font-size:16px}
-    .chip{display:inline-block;margin:4px 6px 0 0;font-size:11px;padding:4px 8px;border-radius:999px;
-      background:#141432;border:1px solid var(--line);color:#cbd5ff}
 
     /* 固定框輪播 */
     #photo-frame{
@@ -78,13 +77,15 @@
     }
     #carousel img{
       position:absolute; inset:0; width:100%; height:100%;
-      object-fit:contain; background:#000;
-      opacity:0; transition:opacity 260ms ease-in-out;
+      object-fit:contain; background:#000; /* 完整顯示，避免切頭 */
+      opacity:0; transition:opacity 240ms ease-in-out;
     }
     #carousel img.active{ opacity:1; }
     #dots{position:absolute; bottom:8px; left:50%; transform:translateX(-50%); display:flex; gap:6px; z-index:3}
     #dots span{width:8px; height:8px; border-radius:50%; background:#9aa; opacity:.6; cursor:pointer}
     #dots span.on{background:#fff; opacity:1}
+
+    /* 左右箭頭 */
     .nav{
       position:absolute; top:50%; transform:translateY(-50%);
       width:34px; height:34px; display:grid; place-items:center;
@@ -92,8 +93,6 @@
       border-radius:999px; z-index:3; cursor:pointer;
       backdrop-filter:saturate(130%) blur(2px);
     }
-    .nav:hover{opacity:.95}
-    .nav:active{transform:translateY(-50%) scale(.98)}
     .prev{left:8px}
     .next{right:8px}
     .nav svg{width:18px; height:18px; fill:#fff}
@@ -145,15 +144,16 @@
     </div>
   </div>
 
-  <!-- Hero（移除兩顆按鈕，改為影片外框） -->
+  <!-- Hero（新口號＋YouTube 影片） -->
   <div class="hero">
     <div class="shine"></div>
     <div class="hero-wrap container">
       <span class="badge">🥋 武德‧專注‧自律</span>
       <h1>在 <span class="grad">秩序與榮耀</span> 裡成長</h1>
-      <p class="sub">品勢、對打、體能與禮儀並進；用紀律換自信，用努力換舞台光。</p>
-
-      <!-- 影片外框開始 -->
+      <p class="sub">
+        從基礎品勢扎根，到創意自由品勢展翼；從體能鍛鍊到對打實戰，再以兒童跆舞點燃舞台魅力。<br>
+        品勢、對打、體能與禮儀並進；用紀律換來自信，用努力換來榮耀，讓學習更有趣、表現更立體，自律與自信同步成長。
+      </p>
       <div class="video-shell">
         <div class="video-accent"></div>
         <div class="video-frame">
@@ -167,18 +167,15 @@
           </iframe>
         </div>
       </div>
-      <!-- 影片外框結束 -->
-
     </div>
   </div>
 
   <!-- 關於 -->
   <section class="sec container" id="about">
     <h2>關於我們</h2>
-    <p class="lead">以武立德、以禮為先。從基本功到競技策略，打造可複製的穩定表現。</p>
     <div class="card"><h3>教育三軸</h3><p>禮儀修養｜技術體能｜品格與自信；學習不只為獎牌，更為成為更好的自己。</p></div>
     <div class="card" style="margin-top:10px"><h3>安全至上</h3><p>分齡分級，小班制；護具齊全、暖身收操與急救知能，降低運動風險。</p></div>
-    <div class="card" style="margin-top:10px"><h3>菁英培訓</h3><p>個別化課表：基本功 → 品勢/對打 → 競技戰術與心理素質，持續追蹤成長。</p></div>
+    <div class="card" style="margin-top:10px"><h3>菁英培訓</h3><p>個別化課表：基本功 → 品勢/自由品勢/對打 → 競技戰術與心理素質，持續追蹤成長。</p></div>
   </section>
 
   <!-- 固定框輪播 -->
@@ -204,25 +201,13 @@
     <h2>課程介紹</h2>
     <div class="card"><h3>幼兒啟蒙（5–7歲）</h3><p>遊戲化訓練專注與協調，建立禮儀、站姿與安全踢擊概念。</p></div>
     <div class="card" style="margin-top:10px"><h3>少年基礎（8–12歲）</h3><p>基本功＋核心體能；導入步伐、反應與入門品勢。</p></div>
-    <div class="card" style="margin-top:10px"><h3>菁英競技／備賽</h3><p>品勢角度精修、對打戰術、比賽模擬與臨場應變；附個人化訓練表。</p></div>
+    <div class="card" style="margin-top:10px"><h3>菁英競技／備賽</h3><p>品勢與自由品勢角度精修、對打戰術、比賽模擬與臨場應變。</p></div>
+    <!-- 已移除：成人體能＆自衛 -->
   </section>
 
-  <!-- 預約＋地圖 -->
+  <!-- 聯絡＋地圖 -->
   <section class="sec container" id="signup">
-    <h2>預約體驗課</h2>
-    <p class="lead">1–2 個工作天內回覆，協助安排試上</p>
-    <form id="form" class="card" novalidate>
-      <label>家長／學員姓名<input class="input" name="name" placeholder="王小明" required /></label>
-      <label>年齡<input class="input" type="number" name="age" min="4" max="80" placeholder="8" required /></label>
-      <label>聯絡電話<input class="input" name="phone" placeholder="09xx-xxx-xxx" required /></label>
-      <label>想報名的課程<select class="input" name="program">
-        <option>幼兒啟蒙</option><option>少年基礎</option><option>菁英競技</option>
-        <option>私教一對一</option></select></label>
-      <label>備註<textarea class="input" name="note" placeholder="可配合時段？是否有運動習慣？"></textarea></label>
-      <button class="btn btn-primary" type="submit">送出表單</button>
-      <p id="ok" style="display:none;color:#9ae6b4;margin:6px 2px 0">已收到您的需求，我們會盡快聯絡您！</p>
-    </form>
-
+    <h2>聯絡我們 / 預約體驗</h2>
     <div class="card map-card">
       <h3 style="margin:12px 14px 0">館務資訊</h3>
       <p style="color:var(--muted);margin:6px 14px 10px">
@@ -244,28 +229,10 @@
     </div>
   </section>
 
-  <!-- Sticky CTA -->
-  <div class="bar">
-    <div class="container">
-      <div class="cta">
-        <a class="call" href="tel:0922556193">撥打黃教練</a>
-        <a class="book" href="#signup">預約體驗</a>
-      </div>
-    </div>
-  </div>
-
   <footer class="container">
     <div>尚武跆拳道 SHANGWU TAEKWONDO</div>
     <div class="fine">© <span id="year"></span> 尚武跆拳道. All rights reserved.</div>
   </footer>
-
-  <style>
-    /* Inputs（置底確保優先權） */
-    label{display:block;margin:6px 0 6px;font-size:12px;color:#cdd0f5}
-    .input,select,textarea{width:100%;padding:12px;border-radius:12px;border:1px solid var(--line);background:#0e0e1a;color:#eef0ff}
-    .input:focus,select:focus,textarea:focus{outline:none;border-color:#4f46e5;box-shadow:0 0 0 3px rgba(79,70,229,.2)}
-    textarea{min-height:110px;resize:vertical}
-  </style>
 
   <!-- Lightbox (全螢幕) -->
   <div id="lightbox" role="dialog" aria-modal="true" aria-label="全螢幕照片檢視">
@@ -285,24 +252,7 @@
     // 年份
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // 平滑捲動
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click',e=>{
-        const id=a.getAttribute('href');
-        if(id.length>1){ e.preventDefault(); document.querySelector(id)?.scrollIntoView({behavior:'smooth'}); }
-      })
-    });
-
-    // 表單示範
-    document.getElementById('form').addEventListener('submit', e=>{
-      e.preventDefault();
-      const data = Object.fromEntries(new FormData(e.target).entries());
-      e.target.reset();
-      document.getElementById('ok').style.display='block';
-      console.log('form:', data);
-    });
-
-    // 照片輪播（3秒/張）
+    // ===== 照片輪播（3秒/張）=====
     const siteBase = window.location.origin + '/chongwu-tkd-site/';
     const files = [
       '551.jpg','552.jpg','553.jpg','554.jpg','555.jpg','556.jpg',
@@ -311,7 +261,7 @@
       '5519.jpg','5520.jpg','5521.jpg'
     ];
 
-    const delay = 3000; // 每張 3 秒
+    const delay = 3000;
     const wrap = document.getElementById('carousel');
     const dots = document.getElementById('dots');
     const prevBtn = document.getElementById('prevBtn');
@@ -346,14 +296,8 @@
 
     show(0); startAuto();
 
-    // 箭頭按鈕
     nextBtn.addEventListener('click', ()=> { next(); restartAuto(); });
     prevBtn.addEventListener('click', ()=> { prev(); restartAuto(); });
-
-    // 滑鼠/觸控暫停
-    const frame = document.getElementById('photo-frame');
-    ['mouseenter','touchstart'].forEach(ev=> frame.addEventListener(ev, stopAuto, {passive:true}));
-    ['mouseleave','touchend','touchcancel'].forEach(ev=> frame.addEventListener(ev, startAuto, {passive:true}));
 
     // Lightbox 全螢幕
     const lb = document.getElementById('lightbox');
@@ -385,7 +329,6 @@
     lbNext.addEventListener('click', ()=> lbShow(lbIndex+1));
     lb.addEventListener('click', (e)=>{ if(e.target===lb) closeLightbox(); });
 
-    // 鍵盤控制（Esc 關閉、← → 切換）
     document.addEventListener('keydown', (e)=>{
       if(!lb.classList.contains('open')) return;
       if(e.key==='Escape') closeLightbox();
@@ -395,3 +338,5 @@
   </script>
 </body>
 </html>
+
+
