@@ -12,8 +12,7 @@
     :root{
       --bg:#0b0b14; --card:#121223; --line:#242446;
       --txt:#eef0ff; --muted:#b7bad7; --accent:#7c5cff; --accent2:#22d3ee; --gold:#facc15;
-      --radius:16px; --pad:18px; --max:620px;
-      --lineGreen:#06C755;
+      --radius:16px; --pad:18px; --max:620px; --lineGreen:#06C755;
     }
     *{box-sizing:border-box}
     html,body{margin:0;background:var(--bg);color:var(--txt);
@@ -21,8 +20,6 @@
     img{max-width:100%;display:block}
     a{color:inherit;text-decoration:none}
     .container{padding:0 var(--pad);max-width:var(--max);margin:0 auto}
-
-    /* 字級與間距 */
     body{font-size:16px; line-height:1.9; letter-spacing:.2px}
     p{margin:0 0 0.9rem}
     h1,h2,h3{line-height:1.35; margin:0 0 .6rem; letter-spacing:.3px}
@@ -40,14 +37,11 @@
     .title b{font-size:18px;letter-spacing:.5px}
     .title small{font-size:12px;color:var(--muted);letter-spacing:.6px}
 
-    /* LINE 主按鈕（共用） */
-    .line-btn{
-      display:inline-flex;align-items:center;gap:10px;
-      padding:12px 16px;border-radius:12px;border:1px solid rgba(255,255,255,.1);
-      background:var(--lineGreen); color:#062b10; font-weight:800;
-      box-shadow:0 8px 20px rgba(6,199,85,.25);
-    }
+    /* LINE 按鈕 */
+    .line-btn{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:12px;border:1px solid rgba(255,255,255,.1);
+      background:var(--lineGreen); color:#062b10; font-weight:800; box-shadow:0 8px 20px rgba(6,199,85,.25)}
     .line-btn svg{width:20px;height:20px;fill:#062b10}
+    .call-btn{padding:12px 16px;border-radius:12px;background:#11152b;border:1px solid var(--line);color:#dbe4ff;font-weight:800}
 
     /* Hero */
     .hero{position:relative;overflow:hidden}
@@ -64,60 +58,34 @@
     .cta-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
 
     /* 影片外框 */
-    .video-shell{
-      position:relative; border-radius:16px; overflow:hidden;
-      border:1px solid var(--line); background:#0b0b14;
-      box-shadow:0 14px 34px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.03);
-      margin-top:12px
-    }
-    .video-accent{
-      position:absolute; inset:-20% -10% auto -10%; height:240px; pointer-events:none;
-      background:
-        radial-gradient(closest-side at 20% 10%, rgba(124,92,255,.18), transparent 70%),
-        radial-gradient(closest-side at 80% 30%, rgba(34,211,238,.14), transparent 70%);
-      filter:blur(24px);
-    }
-    .video-frame{ position:relative; aspect-ratio:16/9; width:100%; }
-    .video-frame iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; }
+    .video-shell{position:relative; border-radius:16px; overflow:hidden; border:1px solid var(--line); background:#0b0b14;
+      box-shadow:0 14px 34px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.03); margin-top:12px}
+    .video-accent{position:absolute; inset:-20% -10% auto -10%; height:240px; pointer-events:none;
+      background:radial-gradient(closest-side at 20% 10%, rgba(124,92,255,.18), transparent 70%),
+                 radial-gradient(closest-side at 80% 30%, rgba(34,211,238,.14), transparent 70%); filter:blur(24px)}
+    .video-frame{ position:relative; aspect-ratio:16/9; width:100% } .video-frame iframe{ position:absolute; inset:0; width:100%; height:100%; border:0 }
 
-    /* Section */
-    section{padding:22px 0;border-top:1px solid var(--line)}
-    .lead{color:var(--muted)}
+    /* Section / Cards */
+    section{padding:22px 0;border-top:1px solid var(--line)} .lead{color:var(--muted)}
     .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px}
     .card + .card{margin-top:12px}
 
-    /* 固定框輪播（320×220） */
-    #photo-frame{
-      width:320px; height:220px; margin:18px auto; position:relative;
-      overflow:hidden; border:3px solid #313244; border-radius:14px; background:#000;
-      user-select:none; -webkit-user-select:none;
-    }
-    #carousel img{
-      position:absolute; inset:0; width:100%; height:100%;
-      object-fit:contain; background:#000;
-      opacity:0; transition:opacity 220ms ease-in-out;
-    }
-    #carousel img.active{ opacity:1; }
-    #dots{position:absolute; bottom:8px; left:50%; transform:translateX(-50%); display:flex; gap:6px; z-index:3}
-    #dots span{width:8px; height:8px; border-radius:50%; background:#9aa; opacity:.6; cursor:pointer}
-    #dots span.on{background:#fff; opacity:1}
-    .nav{position:absolute; top:50%; transform:translateY(-50%); width:36px; height:36px; display:grid; place-items:center;
-      background:rgba(0,0,0,.5); border:1px solid rgba(255,255,255,.25); border-radius:999px; z-index:3; cursor:pointer; backdrop-filter:saturate(130%) blur(2px)}
-    .prev{left:8px}.next{right:8px}
-    .nav svg{width:18px; height:18px; fill:#fff}
+    /* 輪播（固定 320×220） */
+    #photo-frame{width:320px; height:220px; margin:18px auto; position:relative; overflow:hidden; border:3px solid #313244; border-radius:14px; background:#000; user-select:none}
+    #carousel img{position:absolute; inset:0; width:100%; height:100%; object-fit:contain; background:#000; opacity:0; transition:opacity 220ms ease-in-out}
+    #carousel img.active{ opacity:1 } #dots{position:absolute; bottom:8px; left:50%; transform:translateX(-50%); display:flex; gap:6px; z-index:3}
+    #dots span{width:8px; height:8px; border-radius:50%; background:#9aa; opacity:.6; cursor:pointer} #dots span.on{background:#fff; opacity:1}
+    .nav{position:absolute; top:50%; transform:translateY(-50%); width:36px; height:36px; display:grid; place-items:center; background:rgba(0,0,0,.5); border:1px solid rgba(255,255,255,.25); border-radius:999px; z-index:3; cursor:pointer; backdrop-filter:saturate(130%) blur(2px)}
+    .prev{left:8px}.next{right:8px} .nav svg{width:18px; height:18px; fill:#fff}
 
     /* Map */
-    .map-card{ margin-top:12px; border:1px solid var(--line); border-radius:12px; overflow:hidden; background:#0e0e1a; }
-    .map-frame{ aspect-ratio:16/9; width:100%; border:0; display:block; }
+    .map-card{ margin-top:12px; border:1px solid var(--line); border-radius:12px; overflow:hidden; background:#0e0e1a } .map-frame{ aspect-ratio:16/9; width:100%; border:0; display:block }
 
-    /* 底部固定 CTA */
+    /* Sticky bottom CTA */
     .sticky{position:sticky;bottom:0;background:rgba(11,11,20,.85);backdrop-filter:blur(8px);border-top:1px solid var(--line)}
     .sticky .row{display:flex;gap:10px;align-items:center;justify-content:space-between;padding:10px var(--pad)}
-    .call-btn{padding:12px 16px;border-radius:12px;background:#11152b;border:1px solid var(--line);color:#dbe4ff;font-weight:800}
 
-    footer{padding:22px var(--pad) 80px;color:#9ea1c9}
-    .fine{font-size:12px;color:#8b8eb7}
-
+    footer{padding:22px var(--pad) 80px;color:#9ea1c9} .fine{font-size:12px;color:#8b8eb7}
     /* Lightbox */
     #lightbox{position:fixed; inset:0; background:rgba(0,0,0,.9); display:none; align-items:center; justify-content:center; z-index:100}
     #lightbox.open{display:flex}
@@ -125,7 +93,6 @@
     #lb-close,.lb-nav{position:absolute; color:#fff; background:rgba(0,0,0,.4); border:1px solid rgba(255,255,255,.25); border-radius:999px; width:42px; height:42px; display:grid; place-items:center; cursor:pointer; backdrop-filter:saturate(130%) blur(2px)}
     #lb-close{top:16px; right:16px}.lb-nav{top:50%; transform:translateY(-50%)} #lb-prev{left:16px} #lb-next{right:16px}
     .lb-nav svg,#lb-close svg{width:22px;height:22px;fill:#fff}
-
     @media (max-width:420px){h1{font-size:26px}h2{font-size:20px}.hero-wrap{padding:20px var(--pad) 16px}}
   </style>
 </head>
@@ -135,24 +102,22 @@
   <div class="header">
     <div class="brand container">
       <div class="logoBox">
-        <img src="./logo.png" alt="尚武跆拳道 LOGO" onerror="this.style.display='none'">
+        <img id="topLogo" src="./logo.png" alt="尚武跆拳道 LOGO">
       </div>
       <div class="title">
         <b>尚武跆拳道</b>
         <small>書本教不了寶貝的，交给我滿來教！</small>
       </div>
       <div style="margin-left:auto">
-        <!-- 右上角快速 LINE -->
-        <a class="line-btn" href="https://line.me/ti/p/L9AxxjWyAv" target="_blank" rel="noopener" aria-label="用 LINE 聯絡">
-          <!-- LINE icon -->
+        <button class="line-btn" type="button" onclick="openLINE()" aria-label="用 LINE 聯絡">
           <svg viewBox="0 0 24 24"><path d="M19.6 4.8A8.9 8.9 0 0 0 12 2C6.8 2 2.6 5.7 2.6 10.3c0 3 1.9 5.6 4.8 7.1l-.3 3.1c-.1.6.6 1 1.1.7l3.5-2c.8.1 1.6.2 2.4.2 5.2 0 9.4-3.7 9.4-8.3 0-3-1.9-5.6-4.9-7.3z"/></svg>
-          用 LINE 洽詢
-        </a>
+          加入好友
+        </button>
       </div>
     </div>
   </div>
 
-  <!-- Hero：新口號＋影片 -->
+  <!-- Hero -->
   <div class="hero">
     <div class="shine"></div>
     <div class="hero-wrap container">
@@ -167,27 +132,21 @@
         每一次學習，都是向更好的自己邁進。
       </p>
 
-      <!-- 影片 -->
       <div class="video-shell">
         <div class="video-accent"></div>
         <div class="video-frame">
-          <iframe
-            title="尚武跆拳道影片"
+          <iframe title="尚武跆拳道影片"
             src="https://www.youtube-nocookie.com/embed/G8FE2_-fkq8?rel=0&modestbranding=1&playsinline=1"
-            loading="lazy"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen>
-          </iframe>
+            loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
       </div>
 
-      <!-- Hero 內部 CTA -->
       <div class="cta-row">
-        <a class="line-btn" href="https://line.me/ti/p/L9AxxjWyAv" target="_blank" rel="noopener" aria-label="用 LINE 聯絡">
+        <button class="line-btn" type="button" onclick="openLINE()" aria-label="加入 LINE 好友">
           <svg viewBox="0 0 24 24"><path d="M19.6 4.8A8.9 8.9 0 0 0 12 2C6.8 2 2.6 5.7 2.6 10.3c0 3 1.9 5.6 4.8 7.1l-.3 3.1c-.1.6.6 1 1.1.7l3.5-2c.8.1 1.6.2 2.4.2 5.2 0 9.4-3.7 9.4-8.3 0-3-1.9-5.6-4.9-7.3z"/></svg>
-          立即用 LINE 洽詢
-        </a>
+          立即加入 LINE 好友
+        </button>
       </div>
     </div>
   </div>
@@ -224,33 +183,25 @@
         聯絡電話：<strong><a href="tel:0922556193">0922-556-193（黃教練）</a></strong>
       </p>
       <div class="cta-row">
-        <a class="line-btn" href="https://line.me/ti/p/L9AxxjWyAv" target="_blank" rel="noopener" aria-label="用 LINE 聯絡">
+        <button class="line-btn" type="button" onclick="openLINE()" aria-label="加入 LINE 好友">
           <svg viewBox="0 0 24 24"><path d="M19.6 4.8A8.9 8.9 0 0 0 12 2C6.8 2 2.6 5.7 2.6 10.3c0 3 1.9 5.6 4.8 7.1l-.3 3.1c-.1.6.6 1 1.1.7l3.5-2c.8.1 1.6.2 2.4.2 5.2 0 9.4-3.7 9.4-8.3 0-3-1.9-5.6-4.9-7.3z"/></svg>
           LINE 聯絡洽詢
-        </a>
+        </button>
         <a class="call-btn" href="tel:0922556193">直接撥打</a>
       </div>
     </div>
 
     <div class="card map-card" style="margin-top:12px">
-      <iframe
-        class="map-frame"
-        title="尚武跆拳道地圖"
-        loading="lazy"
-        allowfullscreen
+      <iframe class="map-frame" title="尚武跆拳道地圖" loading="lazy" allowfullscreen
         referrerpolicy="no-referrer-when-downgrade"
-        src="https://maps.google.com/maps?hl=zh-TW&q=%E5%8F%B0%E5%8C%97%E5%B8%82%E5%8C%97%E6%8A%95%E5%8D%80%E4%B8%AD%E5%A4%AE%E5%8C%97%E8%B7%AF%E4%BA%8C%E6%AE%B5151%E8%99%9F2%E6%A8%93&t=&z=17&ie=UTF8&iwloc=B&output=embed">
-      </iframe>
+        src="https://maps.google.com/maps?hl=zh-TW&q=%E5%8F%B0%E5%8C%97%E5%B8%82%E5%8C%97%E6%8A%95%E5%8D%80%E4%B8%AD%E5%A4%AE%E5%8C%97%E8%B7%AF%E4%BA%8C%E6%AE%B5151%E8%99%9F2%E6%A8%93&t=&z=17&ie=UTF8&iwloc=B&output=embed"></iframe>
     </div>
   </section>
 
   <!-- Sticky bottom CTA -->
   <div class="sticky">
     <div class="row container">
-      <a class="line-btn" href="https://line.me/ti/p/L9AxxjWyAv" target="_blank" rel="noopener" aria-label="用 LINE 聯絡">
-        <svg viewBox="0 0 24 24"><path d="M19.6 4.8A8.9 8.9 0 0 0 12 2C6.8 2 2.6 5.7 2.6 10.3c0 3 1.9 5.6 4.8 7.1l-.3 3.1c-.1.6.6 1 1.1.7l3.5-2c.8.1 1.6.2 2.4.2 5.2 0 9.4-3.7 9.4-8.3 0-3-1.9-5.6-4.9-7.3z"/></svg>
-        用 LINE 立即洽詢
-      </a>
+      <button class="line-btn" type="button" onclick="openLINE()">用 LINE 立即洽詢</button>
       <a class="call-btn" href="tel:0922556193">撥打黃教練</a>
     </div>
   </div>
@@ -262,103 +213,64 @@
 
   <!-- Lightbox -->
   <div id="lightbox" role="dialog" aria-modal="true" aria-label="全螢幕照片檢視">
-    <button id="lb-close" aria-label="關閉">
-      <svg viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
-    </button>
-    <button class="lb-nav" id="lb-prev" aria-label="上一張">
-      <svg viewBox="0 0 24 24"><path d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
-    </button>
+    <button id="lb-close" aria-label="關閉"><svg viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></button>
+    <button class="lb-nav" id="lb-prev" aria-label="上一張"><svg viewBox="0 0 24 24"><path d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg></button>
     <img id="lb-img" alt="">
-    <button class="lb-nav" id="lb-next" aria-label="下一張">
-      <svg viewBox="0 0 24 24"><path d="M8.59 16.59 10 18l6-6-6-6-1.41 1.41L13.17 12z"/></svg>
-    </button>
+    <button class="lb-nav" id="lb-next" aria-label="下一張"><svg viewBox="0 0 24 24"><path d="M8.59 16.59 10 18l6-6-6-6-1.41 1.41L13.17 12z"/></svg></button>
   </div>
 
   <script>
     // 年份
     document.getElementById('year').textContent = new Date().getFullYear();
 
+    // LOGO 備援：png -> jpg -> 隱藏
+    (function(){
+      const img = document.getElementById('topLogo');
+      img.onerror = function(){
+        if(!img.dataset.triedJpg){ img.src = './logo.jpg'; img.dataset.triedJpg = '1'; }
+        else{ img.style.display='none'; }
+      };
+    })();
+
+    // LINE：優先打開 App，加好友；失敗才退回到 https 連結
+    const LINE_APP_URL = 'line://ti/p/L9AxxjWyAv';
+    const LINE_WEB_URL = 'https://line.me/ti/p/L9AxxjWyAv';
+    function openLINE(){
+      const now = Date.now();
+      const t = setTimeout(()=>{ if(Date.now()-now<1600) window.open(LINE_WEB_URL,'_blank','noopener'); }, 1200);
+      // 嘗試打開 App（多數手機會成功）
+      window.location.href = LINE_APP_URL;
+      // 若成功，timeout 會因為跳離頁面而不執行；若失敗，1.2 秒後開 web 版
+    }
+
     // 照片輪播（3秒/張）
     const siteBase = window.location.origin + '/chongwu-tkd-site/';
-    const files = [
-      '551.jpg','552.jpg','553.jpg','554.jpg','555.jpg','556.jpg',
-      '557.jpg','558.jpg','559.jpg','5510.jpg','5511.jpg','5512.jpg',
-      '5513.jpg','5514.jpg','5515.jpg','5516.jpg','5517.jpg','5518.jpg',
-      '5519.jpg','5520.jpg','5521.jpg'
-    ];
-    const delay = 3000;
-    const wrap = document.getElementById('carousel');
-    const dots = document.getElementById('dots');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-
+    const files = ['551.jpg','552.jpg','553.jpg','554.jpg','555.jpg','556.jpg','557.jpg','558.jpg','559.jpg','5510.jpg','5511.jpg','5512.jpg','5513.jpg','5514.jpg','5515.jpg','5516.jpg','5517.jpg','5518.jpg','5519.jpg','5520.jpg','5521.jpg'];
+    const delay = 3000, wrap = document.getElementById('carousel'), dots = document.getElementById('dots');
+    const prevBtn = document.getElementById('prevBtn'), nextBtn = document.getElementById('nextBtn');
     const imgs = [];
     files.forEach((file, idx) => {
-      const img = document.createElement('img');
-      img.src = siteBase + file;
-      img.alt = `道館照片 ${idx+1}`;
-      img.addEventListener('click', ()=> openLightbox(idx));
-      wrap.appendChild(img);
-      imgs.push(img);
-
-      const d = document.createElement('span');
-      d.addEventListener('click', ()=> show(idx, true));
-      dots.appendChild(d);
+      const img = document.createElement('img'); img.src = siteBase + file; img.alt = `道館照片 ${idx+1}`;
+      img.addEventListener('click', ()=> openLightbox(idx)); wrap.appendChild(img); imgs.push(img);
+      const d = document.createElement('span'); d.addEventListener('click', ()=> show(idx, true)); dots.appendChild(d);
     });
-
-    let i = 0, timer = null;
-    function show(idx, fromUser=false){
-      imgs.forEach((im,k)=> im.classList.toggle('active', k===idx));
-      [...dots.children].forEach((d,k)=> d.classList.toggle('on', k===idx));
-      i = idx;
-    }
-    function next(){ show((i+1)%imgs.length); }
-    function prev(){ show((i-1+imgs.length)%imgs.length, true); }
-    function startAuto(){ timer = setInterval(next, delay); }
-    function stopAuto(){ clearInterval(timer); timer=null; }
-    function restartAuto(){ stopAuto(); startAuto(); }
-
-    show(0); startAuto();
-    nextBtn.addEventListener('click', ()=> { next(); restartAuto(); });
-    prevBtn.addEventListener('click', ()=> { prev(); restartAuto(); });
+    let i=0,timer=null; function show(idx,fromUser=false){ imgs.forEach((im,k)=> im.classList.toggle('active',k===idx)); [...dots.children].forEach((d,k)=> d.classList.toggle('on',k===idx)); i=idx; }
+    function next(){ show((i+1)%imgs.length) } function prev(){ show((i-1+imgs.length)%imgs.length,true) }
+    function startAuto(){ timer=setInterval(next,delay) } function stopAuto(){ clearInterval(timer); timer=null } function restartAuto(){ stopAuto(); startAuto() }
+    show(0); startAuto(); nextBtn.addEventListener('click', ()=>{ next(); restartAuto() }); prevBtn.addEventListener('click', ()=>{ prev(); restartAuto() });
 
     // Lightbox
-    const lb = document.getElementById('lightbox');
-    const lbImg = document.getElementById('lb-img');
-    const lbClose = document.getElementById('lb-close');
-    const lbPrev = document.getElementById('lb-prev');
-    const lbNext = document.getElementById('lb-next');
-    let lbIndex = 0;
-
-    function openLightbox(idx){
-      lbIndex = idx;
-      lbImg.src = imgs[lbIndex].src;
-      lb.classList.add('open');
-      stopAuto();
-    }
-    function closeLightbox(){
-      lb.classList.remove('open');
-      lbImg.src = '';
-      startAuto();
-    }
-    function lbShow(n){
-      lbIndex = (n + imgs.length) % imgs.length;
-      lbImg.src = imgs[lbIndex].src;
-      show(lbIndex, true);
-    }
-    lbClose.addEventListener('click', closeLightbox);
-    lbPrev.addEventListener('click', ()=> lbShow(lbIndex-1));
-    lbNext.addEventListener('click', ()=> lbShow(lbIndex+1));
-    lb.addEventListener('click', (e)=>{ if(e.target===lb) closeLightbox(); });
-
-    document.addEventListener('keydown', (e)=>{
-      if(!lb.classList.contains('open')) return;
-      if(e.key==='Escape') closeLightbox();
-      if(e.key==='ArrowLeft') lbShow(lbIndex-1);
-      if(e.key==='ArrowRight') lbShow(lbIndex+1);
-    });
+    const lb=document.getElementById('lightbox'), lbImg=document.getElementById('lb-img');
+    const lbClose=document.getElementById('lb-close'), lbPrev=document.getElementById('lb-prev'), lbNext=document.getElementById('lb-next'); let lbIndex=0;
+    function openLightbox(idx){ lbIndex=idx; lbImg.src=imgs[lbIndex].src; lb.classList.add('open'); stopAuto() }
+    function closeLightbox(){ lb.classList.remove('open'); lbImg.src=''; startAuto() }
+    function lbShow(n){ lbIndex=(n+imgs.length)%imgs.length; lbImg.src=imgs[lbIndex].src; show(lbIndex,true) }
+    lbClose.addEventListener('click', closeLightbox); lbPrev.addEventListener('click', ()=> lbShow(lbIndex-1)); lbNext.addEventListener('click', ()=> lbShow(lbIndex+1));
+    lb.addEventListener('click',(e)=>{ if(e.target===lb) closeLightbox() });
+    document.addEventListener('keydown',(e)=>{ if(!lb.classList.contains('open')) return; if(e.key==='Escape') closeLightbox(); if(e.key==='ArrowLeft') lbShow(lbIndex-1); if(e.key==='ArrowRight') lbShow(lbIndex+1) });
   </script>
 </body>
 </html>
+
 
 
