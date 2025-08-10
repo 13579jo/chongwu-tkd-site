@@ -13,15 +13,16 @@
       --bg:#0b0b14; --card:#121223; --line:#242446;
       --txt:#eef0ff; --muted:#b7bad7; --accent:#7c5cff; --accent2:#22d3ee; --gold:#facc15;
       --radius:16px; --pad:18px; --max:620px;
+      --lineGreen:#06C755;
     }
     *{box-sizing:border-box}
     html,body{margin:0;background:var(--bg);color:var(--txt);
-      font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,Segoe UI,Roboto,Arial,sans-serif;
-      -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility}
+      font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,Segoe UI,Roboto,Arial,sans-serif}
     img{max-width:100%;display:block}
     a{color:inherit;text-decoration:none}
     .container{padding:0 var(--pad);max-width:var(--max);margin:0 auto}
 
+    /* 字級與間距 */
     body{font-size:16px; line-height:1.9; letter-spacing:.2px}
     p{margin:0 0 0.9rem}
     h1,h2,h3{line-height:1.35; margin:0 0 .6rem; letter-spacing:.3px}
@@ -29,28 +30,40 @@
     h2{font-size:22px; font-weight:800; margin-top:.3rem}
     h3{font-size:17px; font-weight:700}
 
+    /* Header */
     .header{position:sticky;top:0;z-index:50;background:rgba(11,11,20,.7);
       backdrop-filter:blur(8px) saturate(140%);border-bottom:1px solid var(--line)}
-    .brand{display:flex;align-items:center;gap:12px;padding:12px var(--pad)}
-    .logo{width:38px;height:38px;border-radius:12px;background:
-      conic-gradient(from 220deg,var(--accent),var(--accent2),var(--gold),var(--accent));
-      box-shadow:0 0 14px rgba(124,92,255,.35)}
+    .brand{display:flex;align-items:center;gap:12px;padding:8px var(--pad)}
+    .logoBox{width:42px;height:42px;border-radius:12px;overflow:hidden;display:grid;place-items:center;background:#0d0d18;border:1px solid var(--line)}
+    .logoBox img{width:100%;height:100%;object-fit:cover}
     .title{display:flex;flex-direction:column}
     .title b{font-size:18px;letter-spacing:.5px}
     .title small{font-size:12px;color:var(--muted);letter-spacing:.6px}
 
+    /* LINE 主按鈕（共用） */
+    .line-btn{
+      display:inline-flex;align-items:center;gap:10px;
+      padding:12px 16px;border-radius:12px;border:1px solid rgba(255,255,255,.1);
+      background:var(--lineGreen); color:#062b10; font-weight:800;
+      box-shadow:0 8px 20px rgba(6,199,85,.25);
+    }
+    .line-btn svg{width:20px;height:20px;fill:#062b10}
+
+    /* Hero */
     .hero{position:relative;overflow:hidden}
     .shine{position:absolute;inset:-20% -10% auto -10%;height:360px;pointer-events:none;
       background:
         radial-gradient(closest-side at 30% 10%,rgba(124,92,255,.28),transparent 70%),
         radial-gradient(closest-side at 70% 20%,rgba(34,211,238,.22),transparent 70%);
       filter:blur(26px)}
-    .hero-wrap{padding:28px var(--pad) 20px}
+    .hero-wrap{padding:22px var(--pad) 20px}
     .badge{display:inline-flex;gap:8px;align-items:center;font-size:12px;
-      padding:7px 12px;border-radius:999px;background:#161631;border:1px solid var(--line);color:#cbd5ff;margin-bottom:10px}
+      padding:6px 10px;border-radius:999px;background:#161631;border:1px solid var(--line);color:#cbd5ff;margin-bottom:10px}
     .grad{background:linear-gradient(90deg,var(--gold),#fff);-webkit-background-clip:text;background-clip:text;color:transparent}
     .sub{color:var(--muted);margin:.2rem 0 0.8rem}
+    .cta-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
 
+    /* 影片外框 */
     .video-shell{
       position:relative; border-radius:16px; overflow:hidden;
       border:1px solid var(--line); background:#0b0b14;
@@ -67,12 +80,13 @@
     .video-frame{ position:relative; aspect-ratio:16/9; width:100%; }
     .video-frame iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; }
 
+    /* Section */
     section{padding:22px 0;border-top:1px solid var(--line)}
     .lead{color:var(--muted)}
-
     .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px}
     .card + .card{margin-top:12px}
 
+    /* 固定框輪播（320×220） */
     #photo-frame{
       width:320px; height:220px; margin:18px auto; position:relative;
       overflow:hidden; border:3px solid #313244; border-radius:14px; background:#000;
@@ -87,49 +101,32 @@
     #dots{position:absolute; bottom:8px; left:50%; transform:translateX(-50%); display:flex; gap:6px; z-index:3}
     #dots span{width:8px; height:8px; border-radius:50%; background:#9aa; opacity:.6; cursor:pointer}
     #dots span.on{background:#fff; opacity:1}
-
-    .nav{
-      position:absolute; top:50%; transform:translateY(-50%);
-      width:36px; height:36px; display:grid; place-items:center;
-      background:rgba(0,0,0,.5); border:1px solid rgba(255,255,255,.25);
-      border-radius:999px; z-index:3; cursor:pointer; backdrop-filter:saturate(130%) blur(2px);
-    }
-    .prev{left:8px}
-    .next{right:8px}
+    .nav{position:absolute; top:50%; transform:translateY(-50%); width:36px; height:36px; display:grid; place-items:center;
+      background:rgba(0,0,0,.5); border:1px solid rgba(255,255,255,.25); border-radius:999px; z-index:3; cursor:pointer; backdrop-filter:saturate(130%) blur(2px)}
+    .prev{left:8px}.next{right:8px}
     .nav svg{width:18px; height:18px; fill:#fff}
 
+    /* Map */
     .map-card{ margin-top:12px; border:1px solid var(--line); border-radius:12px; overflow:hidden; background:#0e0e1a; }
     .map-frame{ aspect-ratio:16/9; width:100%; border:0; display:block; }
+
+    /* 底部固定 CTA */
+    .sticky{position:sticky;bottom:0;background:rgba(11,11,20,.85);backdrop-filter:blur(8px);border-top:1px solid var(--line)}
+    .sticky .row{display:flex;gap:10px;align-items:center;justify-content:space-between;padding:10px var(--pad)}
+    .call-btn{padding:12px 16px;border-radius:12px;background:#11152b;border:1px solid var(--line);color:#dbe4ff;font-weight:800}
 
     footer{padding:22px var(--pad) 80px;color:#9ea1c9}
     .fine{font-size:12px;color:#8b8eb7}
 
-    #lightbox{
-      position:fixed; inset:0; background:rgba(0,0,0,.9);
-      display:none; align-items:center; justify-content:center; z-index:100;
-    }
+    /* Lightbox */
+    #lightbox{position:fixed; inset:0; background:rgba(0,0,0,.9); display:none; align-items:center; justify-content:center; z-index:100}
     #lightbox.open{display:flex}
-    #lightbox img{
-      max-width:92vw; max-height:90vh; object-fit:contain; background:#000; border-radius:10px;
-      box-shadow:0 10px 40px rgba(0,0,0,.6)
-    }
-    #lb-close, .lb-nav{
-      position:absolute; color:#fff; background:rgba(0,0,0,.4);
-      border:1px solid rgba(255,255,255,.25); border-radius:999px;
-      width:42px; height:42px; display:grid; place-items:center; cursor:pointer;
-      backdrop-filter:saturate(130%) blur(2px);
-    }
-    #lb-close{top:16px; right:16px}
-    .lb-nav{top:50%; transform:translateY(-50%)} 
-    #lb-prev{left:16px}
-    #lb-next{right:16px}
-    .lb-nav svg, #lb-close svg{width:22px; height:22px; fill:#fff}
+    #lightbox img{max-width:92vw; max-height:90vh; object-fit:contain; background:#000; border-radius:10px; box-shadow:0 10px 40px rgba(0,0,0,.6)}
+    #lb-close,.lb-nav{position:absolute; color:#fff; background:rgba(0,0,0,.4); border:1px solid rgba(255,255,255,.25); border-radius:999px; width:42px; height:42px; display:grid; place-items:center; cursor:pointer; backdrop-filter:saturate(130%) blur(2px)}
+    #lb-close{top:16px; right:16px}.lb-nav{top:50%; transform:translateY(-50%)} #lb-prev{left:16px} #lb-next{right:16px}
+    .lb-nav svg,#lb-close svg{width:22px;height:22px;fill:#fff}
 
-    @media (max-width:420px){
-      h1{font-size:26px}
-      h2{font-size:20px}
-      .hero-wrap{padding:24px var(--pad) 16px}
-    }
+    @media (max-width:420px){h1{font-size:26px}h2{font-size:20px}.hero-wrap{padding:20px var(--pad) 16px}}
   </style>
 </head>
 <body>
@@ -137,10 +134,20 @@
   <!-- Header -->
   <div class="header">
     <div class="brand container">
-      <div class="logo" aria-hidden="true"></div>
+      <div class="logoBox">
+        <img src="./logo.png" alt="尚武跆拳道 LOGO" onerror="this.style.display='none'">
+      </div>
       <div class="title">
         <b>尚武跆拳道</b>
         <small>書本教不了寶貝的，交给我滿來教！</small>
+      </div>
+      <div style="margin-left:auto">
+        <!-- 右上角快速 LINE -->
+        <a class="line-btn" href="https://line.me/ti/p/L9AxxjWyAv" target="_blank" rel="noopener" aria-label="用 LINE 聯絡">
+          <!-- LINE icon -->
+          <svg viewBox="0 0 24 24"><path d="M19.6 4.8A8.9 8.9 0 0 0 12 2C6.8 2 2.6 5.7 2.6 10.3c0 3 1.9 5.6 4.8 7.1l-.3 3.1c-.1.6.6 1 1.1.7l3.5-2c.8.1 1.6.2 2.4.2 5.2 0 9.4-3.7 9.4-8.3 0-3-1.9-5.6-4.9-7.3z"/></svg>
+          用 LINE 洽詢
+        </a>
       </div>
     </div>
   </div>
@@ -152,13 +159,15 @@
       <span class="badge">🥋 武德・專注・自律</span>
       <h1>在 <span class="grad">秩序與榮耀</span> 裡成長</h1>
       <p class="sub">
-        一步步從基礎品勢出發<br>
-        展翅於自由品勢的創意天地<br>
-        體能鍛鍊與對打實戰並進<br>
-        再以兒童跆舞綻放笑容與光彩<br>
-        在紀律中建立自信<br>在努力中收穫榮耀<br>
-        每一次學習<br>都是向更好的自己邁進
+        一步步從基礎品勢出發，<br>
+        展翅於自由品勢的創意天地；<br>
+        體能鍛鍊與對打實戰並進，<br>
+        再以兒童跆舞綻放笑容與光彩。<br>
+        在紀律中建立自信，在努力中收穫榮耀，<br>
+        每一次學習，都是向更好的自己邁進。
       </p>
+
+      <!-- 影片 -->
       <div class="video-shell">
         <div class="video-accent"></div>
         <div class="video-frame">
@@ -172,15 +181,23 @@
           </iframe>
         </div>
       </div>
+
+      <!-- Hero 內部 CTA -->
+      <div class="cta-row">
+        <a class="line-btn" href="https://line.me/ti/p/L9AxxjWyAv" target="_blank" rel="noopener" aria-label="用 LINE 聯絡">
+          <svg viewBox="0 0 24 24"><path d="M19.6 4.8A8.9 8.9 0 0 0 12 2C6.8 2 2.6 5.7 2.6 10.3c0 3 1.9 5.6 4.8 7.1l-.3 3.1c-.1.6.6 1 1.1.7l3.5-2c.8.1 1.6.2 2.4.2 5.2 0 9.4-3.7 9.4-8.3 0-3-1.9-5.6-4.9-7.3z"/></svg>
+          立即用 LINE 洽詢
+        </a>
+      </div>
     </div>
   </div>
 
   <!-- 關於 -->
   <section class="sec container" id="about">
     <h2>關於我們</h2>
-    <div class="card"><h3>教育三軸</h3><p class="lead">｜禮儀修養｜技術體能｜品格與自信｜</p>學習不只為獎牌，更為成為更好的自己。</p></div>
-    <div class="card"><h3>安全至上</h3><p class="lead">分齡分級，小班制</p>對打護具齊全、暖身收操與急救知能，降低運動風險。</p></div>
-    <div class="card"><h3>菁英培訓</h3><p class="lead">個別化課表：基本功 → 品勢／自由品勢／對打</p> → 競技戰術與心理素質，持續追蹤成長。</p></div>
+    <div class="card"><h3>教育三軸</h3><p class="lead">禮儀修養｜技術體能｜品格與自信；學習不只為獎牌，更為成為更好的自己。</p></div>
+    <div class="card"><h3>安全至上</h3><p class="lead">分齡分級，小班制；護具齊全、暖身收操與急救知能，降低運動風險。</p></div>
+    <div class="card"><h3>菁英培訓</h3><p class="lead">個別化課表：基本功 → 品勢／自由品勢／對打 → 競技戰術與心理素質，持續追蹤成長。</p></div>
   </section>
 
   <!-- 照片輪播 -->
@@ -198,23 +215,24 @@
     </div>
   </section>
 
-  <!-- 課程 -->
-  <section class="sec container" id="programs">
-    <h2>課程介紹</h2>
-    <div class="card"><h3>幼兒啟蒙（5–7歲）</h3><p class="lead">遊戲化訓練專注與協調，建立禮儀、站姿與安全踢擊概念。</p></div>
-    <div class="card"><h3>少年基礎（8–12歲）</h3><p class="lead">基本功＋核心體能；導入步伐、反應與入門品勢。</p></div>
-    <div class="card"><h3>菁英競技／備賽</h3><p class="lead">品勢與自由品勢角度精修、對打戰術、比賽模擬與臨場應變。</p></div>
-  </section>
-
   <!-- 聯絡＋地圖 -->
   <section class="sec container" id="contact">
-    <h2>聯絡我們 / 預約體驗</h2>
-    <div class="card map-card">
-      <h3 style="margin:6px 14px 0">館務資訊</h3>
-      <p class="lead" style="margin:6px 14px 10px">
+    <h2>聯絡我們</h2>
+    <div class="card">
+      <p class="lead" style="margin:.2rem 0 10px">
         地址：台北市北投區中央北路二段151號2樓<br>
         聯絡電話：<strong><a href="tel:0922556193">0922-556-193（黃教練）</a></strong>
       </p>
+      <div class="cta-row">
+        <a class="line-btn" href="https://line.me/ti/p/L9AxxjWyAv" target="_blank" rel="noopener" aria-label="用 LINE 聯絡">
+          <svg viewBox="0 0 24 24"><path d="M19.6 4.8A8.9 8.9 0 0 0 12 2C6.8 2 2.6 5.7 2.6 10.3c0 3 1.9 5.6 4.8 7.1l-.3 3.1c-.1.6.6 1 1.1.7l3.5-2c.8.1 1.6.2 2.4.2 5.2 0 9.4-3.7 9.4-8.3 0-3-1.9-5.6-4.9-7.3z"/></svg>
+          LINE 聯絡洽詢
+        </a>
+        <a class="call-btn" href="tel:0922556193">直接撥打</a>
+      </div>
+    </div>
+
+    <div class="card map-card" style="margin-top:12px">
       <iframe
         class="map-frame"
         title="尚武跆拳道地圖"
@@ -226,12 +244,23 @@
     </div>
   </section>
 
+  <!-- Sticky bottom CTA -->
+  <div class="sticky">
+    <div class="row container">
+      <a class="line-btn" href="https://line.me/ti/p/L9AxxjWyAv" target="_blank" rel="noopener" aria-label="用 LINE 聯絡">
+        <svg viewBox="0 0 24 24"><path d="M19.6 4.8A8.9 8.9 0 0 0 12 2C6.8 2 2.6 5.7 2.6 10.3c0 3 1.9 5.6 4.8 7.1l-.3 3.1c-.1.6.6 1 1.1.7l3.5-2c.8.1 1.6.2 2.4.2 5.2 0 9.4-3.7 9.4-8.3 0-3-1.9-5.6-4.9-7.3z"/></svg>
+        用 LINE 立即洽詢
+      </a>
+      <a class="call-btn" href="tel:0922556193">撥打黃教練</a>
+    </div>
+  </div>
+
   <footer class="container">
     <div>尚武跆拳道 SHANGWU TAEKWONDO</div>
     <div class="fine">© <span id="year"></span> 尚武跆拳道. All rights reserved.</div>
   </footer>
 
-  <!-- Lightbox (全螢幕) -->
+  <!-- Lightbox -->
   <div id="lightbox" role="dialog" aria-modal="true" aria-label="全螢幕照片檢視">
     <button id="lb-close" aria-label="關閉">
       <svg viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
@@ -246,6 +275,7 @@
   </div>
 
   <script>
+    // 年份
     document.getElementById('year').textContent = new Date().getFullYear();
 
     // 照片輪播（3秒/張）
@@ -256,7 +286,6 @@
       '5513.jpg','5514.jpg','5515.jpg','5516.jpg','5517.jpg','5518.jpg',
       '5519.jpg','5520.jpg','5521.jpg'
     ];
-
     const delay = 3000;
     const wrap = document.getElementById('carousel');
     const dots = document.getElementById('dots');
@@ -282,7 +311,6 @@
       imgs.forEach((im,k)=> im.classList.toggle('active', k===idx));
       [...dots.children].forEach((d,k)=> d.classList.toggle('on', k===idx));
       i = idx;
-      if(fromUser){ restartAuto(); }
     }
     function next(){ show((i+1)%imgs.length); }
     function prev(){ show((i-1+imgs.length)%imgs.length, true); }
@@ -302,14 +330,27 @@
     const lbNext = document.getElementById('lb-next');
     let lbIndex = 0;
 
-    function openLightbox(idx){ lbIndex = idx; lbImg.src = imgs[lbIndex].src; lb.classList.add('open'); stopAuto(); }
-    function closeLightbox(){ lb.classList.remove('open'); lbImg.src = ''; startAuto(); }
-    function lbShow(n){ lbIndex = (n + imgs.length) % imgs.length; lbImg.src = imgs[lbIndex].src; show(lbIndex, true); }
-
+    function openLightbox(idx){
+      lbIndex = idx;
+      lbImg.src = imgs[lbIndex].src;
+      lb.classList.add('open');
+      stopAuto();
+    }
+    function closeLightbox(){
+      lb.classList.remove('open');
+      lbImg.src = '';
+      startAuto();
+    }
+    function lbShow(n){
+      lbIndex = (n + imgs.length) % imgs.length;
+      lbImg.src = imgs[lbIndex].src;
+      show(lbIndex, true);
+    }
     lbClose.addEventListener('click', closeLightbox);
     lbPrev.addEventListener('click', ()=> lbShow(lbIndex-1));
     lbNext.addEventListener('click', ()=> lbShow(lbIndex+1));
     lb.addEventListener('click', (e)=>{ if(e.target===lb) closeLightbox(); });
+
     document.addEventListener('keydown', (e)=>{
       if(!lb.classList.contains('open')) return;
       if(e.key==='Escape') closeLightbox();
@@ -319,7 +360,5 @@
   </script>
 </body>
 </html>
-
-
 
 
